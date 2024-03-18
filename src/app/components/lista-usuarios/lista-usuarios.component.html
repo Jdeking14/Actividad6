@@ -1,0 +1,13 @@
+<section> 
+  <div class="container"> 
+    <h2 class="text-center mt-3">Listado de Usuarios</h2> 
+    <hr> 
+    <div class="row g-4 mb-4">
+      <article *ngFor="let usuario of arrUsuarios" class="col-12 col-md-6 col-xl-4 col-xxl-3">
+        <app-usuario [miUsuario]="usuario"></app-usuario>
+      </article>
+    </div>
+    <button *ngIf="page < total_pages && paginaProxima" class="btn btn-outline-dark" (click)="goStart()" (click)="nextPage()">Página Siguiente</button><button *ngIf="page > 1 && paginaPrevia" class="btn btn-outline-dark" (click)="goStart()" (click)="previousPage()">Página Anterior</button>
+  </div>
+  <app-spinner *ngIf="loading"></app-spinner>
+</section>

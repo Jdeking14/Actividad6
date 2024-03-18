@@ -1,0 +1,17 @@
+<div class="card shadow">
+  <img [src]="miUsuario.image" class="card-img-top" alt="">
+  <div class="card-body">
+    <h5 class="card-title">{{miUsuario.first_name}} {{miUsuario.last_name}}</h5>
+    <div class="d-flex justify-content-between">
+      <button [routerLink]="['/user', miUsuario._id]" class="btn btn-outline-primary me-1">
+        <i class="fa-solid fa-magnifying-glass"></i> Detalle
+    </button>
+    <button [routerLink]="['/updateuser', miUsuario._id]" class="btn btn-outline-warning me-1">
+        <i class="fa-solid fa-rotate"></i> Actualizar
+    </button>
+    <button (click)="delete(miUsuario._id)" class="btn btn-outline-danger me-1">
+        <i class="fa-solid fa-trash-can"></i> Borrar
+    </button>
+    </div>
+  </div>
+</div>

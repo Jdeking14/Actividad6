@@ -1,0 +1,63 @@
+<form novalidate [formGroup]="formModel" (ngSubmit)="getDataForm()" class="px-4 py-3 border rounded bg-light">
+  <div class="mb-3">
+    <label for="first_name" class="form-label">Nombre (*)</label>
+    <input type="text" class="form-control" id="first_name" formControlName="first_name" placeholder="Introduce el nombre del usuario" [class.is-invalid]="checkControl('first_name', 'required') || checkControl('first_name', 'minlength')">
+    <div *ngIf="checkControl('first_name', 'required')" class="invalid-feedback">
+      El campo es requerido.
+    </div>
+    <div *ngIf="checkControl('first_name', 'minlength')" class="invalid-feedback">
+      El nombre no puede ser más corto de 3 letras.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="last_name" class="form-label">Apellidos (*)</label>
+    <input type="text" class="form-control" id="last_name" formControlName="last_name" placeholder="Introduce los apellidos del usuario" [class.is-invalid]="checkControl('last_name', 'required')">
+    <div *ngIf="checkControl('last_name', 'required')" class="invalid-feedback">
+      El campo es requerido.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="username" class="form-label">Nombre Usuario o Apodo (*)</label>
+    <input type="text" class="form-control" id="username" formControlName="username" placeholder="Introduce el nombre usuario o apodo" [class.is-invalid]="checkControl('username', 'required') || checkControl('username', 'minlength')">
+    <div *ngIf="checkControl('username', 'required')" class="invalid-feedback">
+      El campo es requerido.
+    </div>
+    <div *ngIf="checkControl('username', 'minlength')" class="invalid-feedback">
+      El apodo no puede ser más corto de 3 letras.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="email" class="form-label">Email (*)</label>
+    <input type="email" class="form-control" id="email" formControlName="email" placeholder="Introduce el email del usuario" [class.is-invalid]="checkControl('email', 'required') || checkControl('email', 'pattern')">
+    <div *ngIf="checkControl('email', 'required')" class="invalid-feedback">
+      El campo es requerido.
+    </div>
+    <div *ngIf="checkControl('email', 'pattern')" class="invalid-feedback">
+      El email debe ser válido.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="password" class="form-label">Contraseña (*)</label>
+    <input type="password" class="form-control" id="password" formControlName="password" placeholder="Se requieren un mínimo de 8 y un máximo de 15 caracteres" [class.is-invalid]="checkControl('password', 'required') || checkControl('password', 'pattern')">
+    <div *ngIf="checkControl('password', 'required')" class="invalid-feedback">
+      El campo es requerido.
+    </div>
+    <div *ngIf="checkControl('password', 'pattern')" class="invalid-feedback">
+      Al menos dos letras, un número y un carácter especial. Sin espacios.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="repetirpassword" class="form-label">Repetir Contraseña (*)</label>
+    <input type="password" class="form-control" id="repetirpassword" formControlName="repetirpassword" [class.is-invalid]="formModel.hasError('checkpassword')">
+    <div *ngIf="formModel.hasError('checkpassword')" class="invalid-feedback">
+      Las contraseñas no coinciden.
+    </div>
+  </div>
+  <div class="mb-3">
+    <label for="imageFile" class="form-label">Selecciona una imagen</label>
+    <input type="file" class="form-control" id="imageFile" accept="image/*" (change)="displayImageURL($event)">
+  </div>
+  <div class="text-center">
+    <input type="submit" value="Actualizar" class="btn btn-primary" [disabled]="!formModel.valid">
+  </div>
+</form>

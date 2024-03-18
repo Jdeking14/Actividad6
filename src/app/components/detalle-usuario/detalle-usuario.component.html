@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row mt-5 jusfify-content-center align-items-center">
+    <div class="col-12 col-sm-6 text-center">
+      <img [src]="usuario.image" class="img-fluid rounded-circle" alt="Imagen del usuario">
+    </div>
+    <div class="col-12 col-sm-6 text-center border-start border-3">
+      <h3>{{usuario.first_name}}</h3>
+      <h3>{{usuario.last_name}}</h3>
+      <p><span class="fw-bold">Nombre Usuario:</span> {{usuario.username}}</p>
+      <p><span class="fw-bold">Email:</span> {{usuario.email}}</p>
+      <div class="btn-group" role="group" aria-label="Basic outlined example">
+        <button type="button" class="btn btn-outline-dark" (click)="delete(usuario._id)">
+          <i class="fas fa-trash-alt"></i> Eliminar
+        </button>
+        <button [routerLink]="['/updateuser', usuario._id]" type="button" class="btn btn-outline-dark">
+          <i class="fas fa-edit"></i> Actualizar
+        </button>
+        <button [routerLink]="['/home']" type="button" class="btn btn-outline-dark">
+          <i class="fas fa-list"></i> Volver a Listado
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
