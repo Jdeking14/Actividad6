@@ -32,7 +32,7 @@ export class UsuarioComponent implements OnInit {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Sí'
-    }).then((result) => {
+    }).then((result: { isConfirmed: any; }) => {
       if (result.isConfirmed && id) {
         this.usuariosService.deleteUser(id).subscribe({
           next: (response) => {
